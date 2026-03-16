@@ -3,10 +3,9 @@ int main() {
     int i = 1;
     int N;
     scanf("%d", &N);
-    printf("%d \n", i);
-    for ( ; i < N; i=+2)
+    for ( ; i < N; i = i + 2)
     {
-        if (i % 3 == 0)
+        if ( ! i % 2 == 0)
         {
             printf("%d \n", i);
         }
