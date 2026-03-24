@@ -2,12 +2,12 @@
 int main() {
     int n = 2;
     int g = 4;
+    int c = g;
     int *gpt;
     gpt = &n;
-    *gpt = 3;
-
     int *ptr;
-    ptr = &g;
-    *ptr = 5;
+    ptr = &c;
+    g = *gpt;
+    n = *ptr;
     printf("%d, %d", n, g);
 }
