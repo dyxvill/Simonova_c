@@ -1,12 +1,16 @@
 #include <stdio.h>
 int main() {
-    int numbers[] = {1, 2, 5, 7, 9, 21};
+    int numbers[] = {1, 2, -1, 4, 5, 6};
     int l = 6;
     int *p;
     p = numbers;
     for (int i = 0; i < l; i++)
     {
-        printf("%d ", *p);
+        if(*p < 0)
+        {
+            printf("%d", *p);
+            return 1;
+        }
         p++;
     }
     return 0;

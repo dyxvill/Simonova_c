@@ -1,12 +1,14 @@
 #include <stdio.h>
 int main() {
-    int numbers[] = {1, 2, 5, 7, 9, 21};
+    int numbers[] = {1, 2, 3, 4, 5, 6};
     int l = 6;
     int *p;
     p = numbers;
+    int copy[l - 1];
     for (int i = 0; i < l; i++)
     {
-        printf("%d ", *p);
+        copy[i] = *p; 
+        printf("%d ", copy[i]);
         p++;
     }
     return 0;
