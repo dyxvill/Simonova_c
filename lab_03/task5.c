@@ -1,47 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int main() {
     int *arr;
     printf("Сколько у массива элементов - ");
     int N;
     scanf("%d", &N);
     arr = malloc(N * sizeof(int));
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d", *arr);
-        arr++;
+    if (arr == NULL) {
+        return 1;
+    }
+    printf("Введите %d элементов массива:\n", N);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Исходный массив - ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", arr[i]);  
     }
     printf("\nКакой элемент хотите удалить(по индексу) - ");
     int a;
     scanf("%d", &a);
-    for (int i = 0; i < N - 1; i++)
-    {
-        if (i == a)
-        {
-            arr[i] = 1;
-        }
-        arr++;
+    for (int i = a; i < N - 1; i++) {
+        arr[i] = arr[i + 1];
     }
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d", *arr);
-        arr++;
+    N = N - 1;
+    arr = (int*)realloc(arr, N * sizeof(int));
+    if (arr == NULL && N > 0) {
+        return 1;
     }
-    printf("\nex\n");
-    for (int i = 0; i < N; i++)
-    {
-        if (arr[i] == 1)
-        {
-            arr[i] = 0 ;
-        }
+    printf("Новый массив - ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", arr[i]);  
     }
-    int c = N - 1;
-    arr = (int*)realloc(arr, c * sizeof(int));
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d", *arr);
-        arr++;
-    }
+    free(arr);
     return 0;
-
 }

@@ -6,31 +6,34 @@ int main() {
     int N;
     scanf("%d", &N);
     arr = malloc(N * sizeof(int));
-    printf("Куда хотите вставить элемент - ");
+    if (arr == NULL) {
+        return 1;
+    }
+    printf("Введите элементы массива:\n");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Исходный массив - ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\nКуда хотите вставить элемент(по индексу) - ");
     int a;
     scanf("%d", &a);
+    printf("Какое число хотите вставить? - ");
+    int b;
+    scanf("%d", &b);
+    N = N + 1;
+    arr = (int*)realloc(arr, N * sizeof(int));
+    for (int i = N - 1; i > a; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[a] = b;
+    printf("Массив после вставки - ");
     for (int i = 0; i < N; i++)
     {
-        if (i == a)
-        {
-            printf("На что меняем? - ");
-            int b;
-            scanf("%d", &b);
-            arr[i + 1] = b;
-        }
-        arr++;
+        printf("%d", arr[i]);
     }
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d", *arr);
-        arr++;
-    }
-    int c = N + 1;
-    arr = (int*)realloc(arr, c * sizeof(int));
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d", *arr);
-        arr++;
-    }
+    free(arr);
     return 0;
 }
